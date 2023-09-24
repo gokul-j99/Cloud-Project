@@ -5,8 +5,9 @@ const Router = express.Router();
 
 Router.route('/').get(basecontroller.get)
 .all((req, res) => { 
-    res.status(405).end();
     res.set('Cache-Control', 'no-cache');
+    res.status(405).end();
+    
   });
 
 export default Router;
