@@ -3,6 +3,12 @@ import Sequelize  from 'sequelize';
 export const dbConnect = async (req, res) => {
 
     console.log("inside service");
+    if (req.headers['content-length'] > 0){
+        res.set('Cache-Control', 'no-cache');
+        res.status(400).end(); 
+    }
+
+    else{
 
     const sequelize = new Sequelize('mysql://root:msdIndu%4099@localhost:3306/projectManagement', {
     dialectOptions: {
@@ -26,5 +32,7 @@ sequelize.authenticate()
         console.error('Unable to connect to the database:', err);
     });
 
-    return res;
+}
+
+return res;
 }

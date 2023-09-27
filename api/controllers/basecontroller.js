@@ -15,7 +15,6 @@ import * as baseservice from './../services/baseservice.js';
 
 export const get = async (req, res) => {
     try{
-        console.log("inside controller")
         const todoTask = await baseservice.dbConnect(req,res);
         console.log("after controller")
        
